@@ -19,7 +19,7 @@ import io.particle.android.sdk.utils.Async;
 
 public class MainActivity extends AppCompatActivity {
     // MARK: Debug info
-    private final String TAG="JENELLE";
+    private final String TAG="ALAY";
 
     // creating  buttons for the piano
     Button a, b, c, d , e, f, g, ab, cd, de,c1,fg;
@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onSuccess(Object o) {
-                        Log.d(TAG, "Successfully playing G");
+                        Log.d(TAG, "Successfully playing G!");
                     }
 
                     @Override
@@ -324,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onSuccess(Object o) {
-                        Log.d(TAG, "Successfully playing C1");
+                        Log.d(TAG, "Successfully playing C1!");
                     }
 
                     @Override
