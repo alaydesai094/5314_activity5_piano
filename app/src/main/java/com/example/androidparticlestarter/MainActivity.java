@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG="JENELLE";
 
     // creating  buttons for the piano
-    Button a, b, c, d , e, f, g, ab, cd, de, ef,fg;
+    Button a, b, c, d , e, f, g, ab, cd, de,c1,fg;
 
     // MARK: Particle Account Info
     private final String PARTICLE_USERNAME = "dhyanee.bhatt@gmail.com";
     private final String PARTICLE_PASSWORD = "niti9945";
 
     // MARK: Particle device-specific info
-    private final String DEVICE_ID = "2a002e001447363333343437";
+    private final String DEVICE_ID = "310045001047363333343437";
 
     // MARK: Particle Publish / Subscribe variables
     private long subscriptionId;
@@ -44,17 +43,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //
-        a = findViewById(R.id.a);
-        b = findViewById(R.id.b);
+        c1 = findViewById(R.id.c1);
         c = findViewById(R.id.c);
         d = findViewById(R.id.d);
         e = findViewById(R.id.e);
         f = findViewById(R.id.f);
         g = findViewById(R.id.g);
+        a = findViewById(R.id.a);
+        b = findViewById(R.id.b);
         ab = findViewById(R.id.ab);
         cd = findViewById(R.id.cd);
         de = findViewById(R.id.de);
-        ef = findViewById(R.id.ef);
         fg = findViewById(R.id.fg);
 
         // 1. Initialize your connection to the Particle API
@@ -276,6 +275,65 @@ public class MainActivity extends AppCompatActivity {
                 });
                 break;
 
+            case R.id.g:
+                Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
+
+                    @Override
+                    public Object callApi(@NonNull ParticleCloud particleCloud) throws ParticleCloudException, IOException {
+
+                        List<String> param = new ArrayList<String>();
+                        param.add("G");
+                        try {
+
+                            mDevice.callFunction("key",param);
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                        return -1;
+                    }
+                    @Override
+                    public void onSuccess(Object o) {
+                        Log.d(TAG, "Successfully playing G");
+                    }
+
+                    @Override
+                    public void onFailure(ParticleCloudException exception) {
+                        Log.d(TAG, exception.getBestMessage());
+                    }
+                });
+                break;
+
+
+            case R.id.c1:
+                Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
+
+                    @Override
+                    public Object callApi(@NonNull ParticleCloud particleCloud) throws ParticleCloudException, IOException {
+
+                        List<String> param = new ArrayList<String>();
+                        param.add("C1");
+                        try {
+
+                            mDevice.callFunction("key",param);
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                        return -1;
+                    }
+                    @Override
+                    public void onSuccess(Object o) {
+                        Log.d(TAG, "Successfully playing C1");
+                    }
+
+                    @Override
+                    public void onFailure(ParticleCloudException exception) {
+                        Log.d(TAG, exception.getBestMessage());
+                    }
+                });
+                break;
+
             case R.id.de:
                 Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
 
@@ -306,64 +364,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
 
-            case R.id.ab:
-                Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
-
-                    @Override
-                    public Object callApi(@NonNull ParticleCloud particleCloud) throws ParticleCloudException, IOException {
-
-                        List<String> param = new ArrayList<String>();
-                        param.add("AB");
-                        try {
-
-                            mDevice.callFunction("key",param);
-                        }
-                        catch(Exception e)
-                        {
-                        }
-                        return -1;
-                    }
-                    @Override
-                    public void onSuccess(Object o) {
-                        Log.d(TAG, "Successfully playing AB");
-                    }
-
-                    @Override
-                    public void onFailure(ParticleCloudException exception) {
-                        Log.d(TAG, exception.getBestMessage());
-                    }
-                });
-                break;
-
-            case R.id.bc:
-                Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
-
-                    @Override
-                    public Object callApi(@NonNull ParticleCloud particleCloud) throws ParticleCloudException, IOException {
-
-                        List<String> param = new ArrayList<String>();
-                        param.add("BC");
-                        try {
-
-                            mDevice.callFunction("key",param);
-                        }
-                        catch(Exception e)
-                        {
-                        }
-                        return -1;
-                    }
-                    @Override
-                    public void onSuccess(Object o) {
-                        Log.d(TAG, "Successfully playing BC");
-                    }
-
-                    @Override
-                    public void onFailure(ParticleCloudException exception) {
-                        Log.d(TAG, exception.getBestMessage());
-                    }
-                });
-                break;
-
             case R.id.cd:
                 Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
 
@@ -393,15 +393,14 @@ public class MainActivity extends AppCompatActivity {
                 });
                 break;
 
-
-            case R.id.ef:
+            case R.id.ab:
                 Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
 
                     @Override
                     public Object callApi(@NonNull ParticleCloud particleCloud) throws ParticleCloudException, IOException {
 
                         List<String> param = new ArrayList<String>();
-                        param.add("EF");
+                        param.add("AB");
                         try {
 
                             mDevice.callFunction("key",param);
@@ -413,7 +412,36 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onSuccess(Object o) {
-                        Log.d(TAG, "Successfully playing EF");
+                        Log.d(TAG, "Successfully playing AB");
+                    }
+
+                    @Override
+                    public void onFailure(ParticleCloudException exception) {
+                        Log.d(TAG, exception.getBestMessage());
+                    }
+                });
+                break;
+
+            case R.id.ga:
+                Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
+
+                    @Override
+                    public Object callApi(@NonNull ParticleCloud particleCloud) throws ParticleCloudException, IOException {
+
+                        List<String> param = new ArrayList<String>();
+                        param.add("GA");
+                        try {
+
+                            mDevice.callFunction("key",param);
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                        return -1;
+                    }
+                    @Override
+                    public void onSuccess(Object o) {
+                        Log.d(TAG, "Successfully playing GA");
                     }
 
                     @Override
@@ -452,7 +480,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 break;
+
         }
-        // Switch end
+
     }
 }
